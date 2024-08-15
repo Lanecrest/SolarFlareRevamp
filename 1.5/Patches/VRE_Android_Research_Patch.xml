@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The point of this is to remove the emphasis on needing to fight mechs or have a mechanitor to access the android tech, which are thematically much different than mechs anyway -->
+<Patch>
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Vanilla Races Expanded - Android</li>
+		</mods>
+		<match Class="PatchOperationReplace">
+			<xpath>/Defs/ResearchProjectDef[defName='VREA_AndroidTech']/prerequisites/li[text()='HighMechtech']</xpath>
+			<value>
+				<li>AdvancedFabrication</li>
+			</value>
+		</match>
+	</Operation>
+</Patch>
