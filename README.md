@@ -17,9 +17,17 @@ Vanilla Races Expanded - Android
 
 
 # ChangeLog
+0.2.2
+-
+-Lowered the tickrate and battery drainage but this behavior will kind of get a complete rework once the logic is implemented for anything connected to a battery to stay on and not "surge."
+
+-VFEA batteries are now no longer drained during solar flares.
+
+-Created GitHub project.
+
 0.2.1
 -
--The current implementation recycles the power at a certain tick rate (currently 1500, trying to not be a performance hog for users of this mod) and then will start to go back out, before recyling again, during the Solar Flare.
+-The current implementation resets the power at a certain tick rate (currently 1500, trying to not be a performance hog for users of this mod) and then will start to go back out, before recyling again, during the Solar Flare, creating a sort of "surging" effect.
 
 -Batteries continue to drain at a constant rate at the trade off of the power being on sporadically (however due to the whole thing only refreshing at a certain tick rate, the current stored energy level only updates every few moments).
 
@@ -53,3 +61,4 @@ Todo:
 -
 -Create mod settings menu with toggles for appropriate patches
 -Actually implement the behavior of equipment staying on if connected to a battery (right now it just kind of cheats and does it anyway)
+-Make zzzt more forgiving
