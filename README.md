@@ -5,7 +5,7 @@ For Science! This mod is for those colonists who value science and industry over
 
 Base Game
 -
--Changes the behavior of SolarFlares to allow electricity to continue working if your grid is connected to batteries, which also continue to drain during the event
+-Changes the behavior of Solar Flares to allow electricity to continue working if your grid is connected to batteries, which also continue to drain during the event (does not effect the operations ancient technology from Vanilla Factions Expanded - Ancients).
 
 --This was done to make the game more rewarding for having batteries and to allow potentially life threatening situations be mitigated by planning ahead with batteries.
 
@@ -15,11 +15,6 @@ Vanilla Races Expanded - Android
 
 --This was done to remove the need for having a mechanitor and fighting boss mechs to access the research.
 
-Vanilla Factions Expanded - Ancients
--
--Not yet implemented - allows ancient batteries to be unaffected by the new "SolarFlare" drain behavior
-
---The point of the ancient tech is that it thrives during a SolarFlare so it only made sense to have it not be negatively impacted by the reworked event
 
 # ChangeLog
 0.2.1
@@ -51,9 +46,10 @@ Vanilla Factions Expanded - Ancients
 
 Bugs:
 -
--Ancient Batteries from Vanilla Factions Expanded - Ancients will drain during the custom Solar Flare event
+-None known ATM
 
 
 Todo:
 -
 -Create mod settings menu with toggles for appropriate patches
+-Actually implement the behavior of equipment staying on if connected to a battery (right now it just kind of cheats and does it anyway)
