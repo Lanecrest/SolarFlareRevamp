@@ -1,25 +1,30 @@
-﻿using Verse;
+﻿using System;
+using Verse;
 using RimWorld;
 using UnityEngine;
-using VFEAncients;
 
 namespace ForScience
 {
     public class GameCondition_FS_SolarFlare : GameCondition_DisableElectricity
     {
-        private bool vfeaActive;
+        private Type compSolarPowerUpType = null;
+
 
         public override void Init()
         {
             base.Init();
-            vfeaActive = ModsConfig.IsActive("VanillaExpanded.VFEA");
-            Log.Message("For Science! Solar Flare initialized. Vanilla Factions Expanded - Ancients found?: " + vfeaActive);
+            Log.Message("For Science! Solar Flare initialized.");
+            if (ModsConfig.IsActive("VanillaExpanded.VFEA"))
+            {
+                Log.Message("Vanilla Factions Expanded - Ancients logic patched");
+                compSolarPowerUpType = Type.GetType("VFEAncients.CompSolarPowerUp, VFEAncients");
+            }
         }
 
         public override void GameConditionTick()
         {
-            float batteryDrain = 500000f * CompPower.WattsToWattDaysPerTick;
-            if (Find.TickManager.TicksGame % 1500 == 0)
+            float batteryDrain = 100000f * CompPower.WattsToWattDaysPerTick;
+            if (Find.TickManager.TicksGame % 1000 == 0)
             {
                 foreach (var building in this.SingleMap.listerBuildings.allBuildingsColonist)
                 {
@@ -29,34 +34,44 @@ namespace ForScience
                     {
                         traderComp.PowerOn = true;
                     }
-                    if (batteryComp != null)
+                    if (compSolarPowerUpType != null)
                     {
-                        if (vfeaActive)
+                        var ancientComp = building.GetCompByReflection(compSolarPowerUpType);
+                        if (batteryComp != null && ancientComp == null)
                         {
-                            var ancientComp = building.TryGetComp<CompSolarPowerUp>();
-                            if (ancientComp != null)
-                            {
-                                // Do Nothing
-                            }
-                            else
-                            {
-                                batteryComp.DrawPower(Mathf.Min(batteryDrain, batteryComp.StoredEnergy));
-                            }
+                            batteryComp.DrawPower(Mathf.Min(batteryDrain, batteryComp.StoredEnergy));
                         }
-                        else
+                    }
+                    else
+                    {
+                        if (batteryComp != null)
                         {
                             batteryComp.DrawPower(Mathf.Min(batteryDrain, batteryComp.StoredEnergy));
                         }
                     }
                 }
-                Log.Message($"For Science! Solar Flare is draining {batteryDrain} watt-days per tick from batteries.");
             }
+            Log.Message($"For Science! Solar Flare is draining {batteryDrain} watt-days per tick from batteries.");
         }
 
         public override void End()
         {
             base.End();
             Log.Message("For Science! Solar Flare ended.");
+        }
+    }
+    public static class ReflectionExtensions
+    {
+        public static object GetCompByReflection(this ThingWithComps thing, Type compType)
+        {
+            foreach (var comp in thing.AllComps)
+            {
+                if (comp.GetType() == compType)
+                {
+                    return comp;
+                }
+            }
+            return null;
         }
     }
 }
