@@ -6,6 +6,7 @@ For Science! This mod is for those colonists who value science and industry over
 ## Base Game
 - Changes the behavior of Solar Flares to allow electricity to continue working if your grid is connected to batteries, which also continue to drain during the event (does not effect the operations ancient technology from Vanilla Factions Expanded - Ancients).
   - This was done to make the game more rewarding for having batteries and to allow potentially life threatening situations be mitigated by planning ahead with batteries.
+    - Also it doesn't technically do this yet, but it will! Right now it just creates a surging effect so everything powers on and off while the batteries drain.
 
 ## Vanilla Races Expanded - Android
 - Changes the research requirement of Android Tech to Advanced Fabrication instead of High Mechtech
