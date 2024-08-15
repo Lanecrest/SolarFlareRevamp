@@ -3,7 +3,7 @@
 	<packageId>DoctorWorm.ForScience</packageId>
 	<name>For Science!</name>
 	<author>Doctor Worm</author>
-	<modVersion>0.2.1</modVersion>
+	<modVersion>0.2.2</modVersion>
 	
 	<supportedVersions>
 		<li>1.5</li>
