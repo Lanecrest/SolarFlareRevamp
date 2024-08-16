@@ -6,7 +6,6 @@ For Science! This mod is for those colonists who value science and industry over
 ## Base Game
 - Changes the behavior of Solar Flares to allow electricity to continue working if your grid is connected to batteries, which also continue to drain during the event (does not effect the operations ancient technology from Vanilla Factions Expanded - Ancients).
   - This was done to make the game more rewarding for having batteries and to allow potentially life threatening situations be mitigated by planning ahead with batteries.
-    - Also it doesn't technically do this yet, but it will! Right now it just creates a surging effect so everything powers on and off while the batteries drain.
 
 ## Vanilla Races Expanded - Android
 - Changes the research requirement of Android Tech to Advanced Fabrication instead of High Mechtech
@@ -14,6 +13,10 @@ For Science! This mod is for those colonists who value science and industry over
 
 
 # ChangeLog
+## 0.3.0
+- Overhauled the battery draining system which also allowed me to implement having things connected to batteries stay powered during solar flare. If all batteries are drained, the power goes out.
+- Batteries drain based on the number of things in their particular power network and the number of batteries.
+
 ## 0.2.2
 - Lowered the tickrate and battery drainage but this behavior will kind of get a complete rework once the logic is implemented for anything connected to a battery to stay on and not "surge."
 - VFEA batteries are now no longer drained during solar flares.
@@ -32,16 +35,14 @@ For Science! This mod is for those colonists who value science and industry over
 - Changed implementation of VRE - Android change to be conditional based on whether or not that mod is loaded (to allow this mod to do more things and whether or not certain mods are loaded)
 - Updated mod description to outline the scope of what the general purpose of the mod is. Please refer to Steam/GitHub for full list of features/changes.
 
-
 ## 0.1.0
 - Initial functionality of changing Vanilla Races Expanded - Android: Android Tech to require Advanced Fabrication research INSTEAD of High Mechtech.
 
 ## Bugs
-- None known ATM
+- Batteries with no power are factored into the energy depletion rate, so power will artificially drain slower if you have a bunch of empty batteries
 
 ## Todo
 - Create mod settings menu with toggles for appropriate patches
-- Actually implement the behavior of equipment staying on if connected to a battery (right now it just kind of cheats and does it anyway)
 - Make Zzzt more forgiving
 
 ## The Future
