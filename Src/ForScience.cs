@@ -1,65 +1,13 @@
-﻿using System;
-using Verse;
+﻿using Verse;
 using RimWorld;
 using UnityEngine;
+using System;
+using System.Collections.Generic;
 
 namespace ForScience
 {
-    public class GameCondition_FS_SolarFlare : GameCondition_DisableElectricity
-    {
-        private Type compSolarPowerUpType = null;
 
-
-        public override void Init()
-        {
-            base.Init();
-            Log.Message("For Science! Solar Flare initialized.");
-            if (ModsConfig.IsActive("VanillaExpanded.VFEA"))
-            {
-                Log.Message("Vanilla Factions Expanded - Ancients logic patched");
-                compSolarPowerUpType = Type.GetType("VFEAncients.CompSolarPowerUp, VFEAncients");
-            }
-        }
-
-        public override void GameConditionTick()
-        {
-            float batteryDrain = 100000f * CompPower.WattsToWattDaysPerTick;
-            if (Find.TickManager.TicksGame % 1000 == 0)
-            {
-                foreach (var building in this.SingleMap.listerBuildings.allBuildingsColonist)
-                {
-                    var traderComp = building.TryGetComp<CompPowerTrader>();
-                    var batteryComp = building.TryGetComp<CompPowerBattery>();
-                    if (traderComp != null && !traderComp.PowerOn)
-                    {
-                        traderComp.PowerOn = true;
-                    }
-                    if (compSolarPowerUpType != null)
-                    {
-                        var ancientComp = building.GetCompByReflection(compSolarPowerUpType);
-                        if (batteryComp != null && ancientComp == null)
-                        {
-                            batteryComp.DrawPower(Mathf.Min(batteryDrain, batteryComp.StoredEnergy));
-                        }
-                    }
-                    else
-                    {
-                        if (batteryComp != null)
-                        {
-                            batteryComp.DrawPower(Mathf.Min(batteryDrain, batteryComp.StoredEnergy));
-                        }
-                    }
-                }
-            }
-            Log.Message($"For Science! Solar Flare is draining {batteryDrain} watt-days per tick from batteries.");
-        }
-
-        public override void End()
-        {
-            base.End();
-            Log.Message("For Science! Solar Flare ended.");
-        }
-    }
+    // For Reflection checks
     public static class ReflectionExtensions
     {
         public static object GetCompByReflection(this ThingWithComps thing, Type compType)
@@ -72,6 +20,120 @@ namespace ForScience
                 }
             }
             return null;
+        }
+    }
+
+    // Class for new solar flare game condition
+    public class GameCondition_FS_SolarFlare : GameCondition_DisableElectricity
+    {
+        // Used for Vanilla Factions Expanded - Ancients compatibility
+        private Type compSolarPowerUpType = null;
+
+        // In the future, this value will be changeable via mod settings, affects the rate batteries drain
+        float drainMultiplier = 1f;
+
+        // For debug logging
+        private bool hasLogged = false;
+
+        // Checks if mod compatibilities are needed, messages for debug
+        public override void Init()
+        {
+            base.Init();
+            if (Prefs.DevMode)
+            {
+                Log.Message("For Science! Solar Flare initialized.");
+            }
+            if (ModsConfig.IsActive("VanillaExpanded.VFEA"))
+            {
+                if (Prefs.DevMode)
+                {
+                    Log.Message("Vanilla Factions Expanded - Ancients logic patched");
+                }
+                compSolarPowerUpType = Type.GetType("VFEAncients.CompSolarPowerUp, VFEAncients");
+            }
+        }
+
+        // Method to check if something is connected to a battery and to stay powered if so
+        public void KeepTheLightsOn(Map map)
+        {
+            foreach (var building in map.listerBuildings.allBuildingsColonist)
+            {
+                var traderComp = building.TryGetComp<CompPowerTrader>();
+                if (traderComp != null)
+                {
+                    bool isConnectedToBattery = false;
+                    foreach (var powerNet in map.powerNetManager.AllNetsListForReading)
+                    {
+                        if (powerNet.powerComps.Contains(traderComp))
+                        {
+                            isConnectedToBattery = powerNet.batteryComps.Any(batteryLevelComp => batteryLevelComp.StoredEnergy > 0f);
+                            {
+                                if (isConnectedToBattery)
+                                {
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    if (isConnectedToBattery)
+                    {
+                        traderComp.PowerOn = true;
+                    }
+                }
+            }
+        }
+
+        // Drains power based on the number of items in your power network and the number of batteries you have connected to said network
+        public override void GameConditionTick()
+        {
+            base.GameConditionTick();
+            Map map = this.SingleMap;
+            KeepTheLightsOn(map);
+            int batteryCount = 0;
+            float totalPowerDraw = 0f;
+            float perBatteryDrain = 0f;
+            foreach (PowerNet powerNet in map.powerNetManager.AllNetsListForReading)
+            {
+                List<CompPowerBattery> batteries = powerNet.batteryComps;
+                if (batteries.Count == 0) continue;
+                batteryCount = batteries.Count;
+                foreach (CompPowerTrader comp in powerNet.powerComps)
+                {
+                    if (comp.PowerOn)
+                    {
+                        totalPowerDraw += Mathf.Abs(comp.EnergyOutputPerTick);
+                    }
+                }
+                perBatteryDrain = (totalPowerDraw * drainMultiplier) / batteries.Count;
+                foreach (CompPowerBattery battery in batteries)
+                {
+                    // This is the VFEA compatibility
+                    var ancientComp = battery.parent.GetCompByReflection(compSolarPowerUpType);
+                    if (ancientComp == null)
+                    {
+                        battery.DrawPower(Mathf.Min(perBatteryDrain, battery.StoredEnergy));
+                    }
+                }
+            }
+            if (Prefs.DevMode && !hasLogged)
+            {
+                Log.Message($"For Science! Solar Flare battery drain values:");
+                Log.Message($"Battery Count: {batteryCount}");
+                Log.Message($"Total Power Draw: {totalPowerDraw}");
+                Log.Message($"Drain Multiplier: {drainMultiplier}");
+                Log.Message($"Per Battery Drain: {perBatteryDrain}");
+                hasLogged = true;
+            }
+        }
+
+        // Basically just for debug - may remove in future
+        public override void End()
+        {
+            base.End();
+            if (Prefs.DevMode)
+            {
+                Log.Message("For Science! Solar Flare ended.");
+            }
         }
     }
 }
