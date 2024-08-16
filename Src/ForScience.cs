@@ -1,6 +1,6 @@
-﻿using Verse;
+﻿using UnityEngine;
 using RimWorld;
-using UnityEngine;
+using Verse;
 using System;
 using System.Collections.Generic;
 
@@ -30,10 +30,7 @@ namespace ForScience
         private Type compSolarPowerUpType = null;
 
         // In the future, this value will be changeable via mod settings, affects the rate batteries drain
-        float drainMultiplier = 1f;
-
-        // For debug logging
-        private bool hasLogged = false;
+        float drainMultiplier = 0.25f;
 
         // Checks if mod compatibilities are needed, messages for debug
         public override void Init()
@@ -45,11 +42,11 @@ namespace ForScience
             }
             if (ModsConfig.IsActive("VanillaExpanded.VFEA"))
             {
+                compSolarPowerUpType = Type.GetType("VFEAncients.CompSolarPowerUp, VFEAncients");
                 if (Prefs.DevMode)
                 {
                     Log.Message("Vanilla Factions Expanded - Ancients logic patched");
                 }
-                compSolarPowerUpType = Type.GetType("VFEAncients.CompSolarPowerUp, VFEAncients");
             }
         }
 
@@ -95,6 +92,7 @@ namespace ForScience
             foreach (PowerNet powerNet in map.powerNetManager.AllNetsListForReading)
             {
                 List<CompPowerBattery> batteries = powerNet.batteryComps;
+                batteries.RemoveAll(battery => battery.StoredEnergy <= 0f);
                 if (batteries.Count == 0) continue;
                 batteryCount = batteries.Count;
                 foreach (CompPowerTrader comp in powerNet.powerComps)
@@ -115,14 +113,17 @@ namespace ForScience
                     }
                 }
             }
-            if (Prefs.DevMode && !hasLogged)
+            // Debug logging
+            if (Find.TickManager.TicksGame % 1000 == 0)
             {
-                Log.Message($"For Science! Solar Flare battery drain values:");
-                Log.Message($"Battery Count: {batteryCount}");
-                Log.Message($"Total Power Draw: {totalPowerDraw}");
-                Log.Message($"Drain Multiplier: {drainMultiplier}");
-                Log.Message($"Per Battery Drain: {perBatteryDrain}");
-                hasLogged = true;
+                if (Prefs.DevMode)
+                {
+                    Log.Message($"For Science! Solar Flare battery drain values:");
+                    Log.Message($"Battery Count: {batteryCount}");
+                    Log.Message($"Total Power Draw: {totalPowerDraw}");
+                    Log.Message($"Drain Multiplier: {drainMultiplier}");
+                    Log.Message($"Per Battery Drain: {perBatteryDrain}");
+                }
             }
         }
 
