@@ -52,5 +52,6 @@ For Science! This mod is for those colonists who value science and industry over
   - There is other BioSculptor stuff I'd like to change but there are currently other mods that do it well and where do I draw the line on making this a mod that just combines a bunch of functionality of other mods vs my own ideas?
 - Short Circuit (Zzzt) less awful.
   - When looking into this I found an older mod not updated to 1.5 with posted source code that I thought about incorporating, but it had notes about incompatibilies with "fuse box" mods which took me down a rabbit hole of power management and short circuit mods that I feel like I should probably not do anything around this behavior then and leave it up to those mods, but we'll see - on the backburner for now.
+- Make craftable things in Vanilla that are not currently craftable that are science-y related? (eg arcotech bionics?)
 
 
