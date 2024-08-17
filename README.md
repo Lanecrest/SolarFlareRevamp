@@ -45,7 +45,8 @@ For Science! This mod is for those colonists who value science and industry over
 - None ATM but need to check how zzzt interacts with with new solar flare battery behavior
 
 ## Short Term Goals
-- Create mod settings menu with toggles for appropriate patches and adjustable values where applicable.
+- Add support for EMI field to behave similarly with batteries supporting colony
+- Mod settings?
 
 ## Long Term Ideas
 - Maybe some BioSculptor behavior like regenerating all parts at once at the tradeoff of dynamically changing the amount of time you spend in the pod.
