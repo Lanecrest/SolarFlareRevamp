@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-	<packageId>DoctorWorm.ForScience</packageId>
-	<name>For Science!</name>
+	<packageId>DoctorWorm.SolarFlareRevamp</packageId>
+	<name>Solar Flare Revamp</name>
 	<author>Doctor Worm</author>
-	<modVersion>0.3.1</modVersion>
+	<modVersion>0.3.2</modVersion>
 	
 	<supportedVersions>
 		<li>1.5</li>
@@ -14,10 +14,8 @@
 		<li>Ludeon.RimWorld.Royalty</li>
 		<li>Ludeon.RimWorld.Ideology</li>
 		<li>Ludeon.RimWorld.Biotech</li>
-		<li>vanillaracesexpanded.android</li>
 	</loadAfter>
 	
 	<description>
-		For Science! This mod is for those colonists who value science and industry over murder, pillaging, cannibalism, and other low forms of behavior. This is a mod for a more... civilized age. What For Science! aims to do is change existing or provide new functions to the game, DLC, and even other mods that speak to the flavor of furthering scientific progress over combat, mother nature, and father time. This could result in some things becoming easier (or in some cases perhaps harder) but a full list of what is changed or added can be found on the project's Steam or GitHub pages.
-	</description>
+Solar Flare Revamp aims to make Solar Flares behave a little differently. This will generally make them more forgiving but also, hopefully, more interesting. A full list of what is changed can be found on the project's Steam or GitHub pages.	</description>
 </ModMetaData>
