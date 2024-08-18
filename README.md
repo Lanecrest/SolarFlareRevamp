@@ -1,18 +1,21 @@
-# For Science!
-For Science! This mod is for those colonists who value science and industry over murder, pillaging, cannibalism, and other low forms of behavior. This is a mod for a more... civilized age. What For Science! aims to do is change existing or provide new functions to the game, DLC, and even other mods that speak to the flavor of furthering scientific progress over combat, mother nature, and father time. This could result in some things becoming easier (or in some cases perhaps harder) but a full list of what is changed or added can be found on the project's Steam or GitHub pages.
+# Solar Flare Revamp
+Solar Flare Revamps aims to make Solar Flares behave a little differently. This will generally make them more forgiving but also, hopefully, more interesting. A full list of what is changed can be found on the project's Steam or GitHub pages.
 
 # Features
 
 ## Base Game
-- Changes the behavior of Solar Flares to allow electricity to continue working if your grid is connected to batteries, which also continue to drain during the event (does not effect the operations of ancient technology from Vanilla Factions Expanded - Ancients).
-  - This was done to make batteries more useful and to also potentially escape life or death situations due to power outages if you have been planning with batteries.
+- Changes the behavior of Solar Flares to allow electricity to continue working if your grid is connected to batteries.
+- As a trade off, your batteries will continue to drain during Solar Flares, at an expedited rate.
+- In the unfortunate scenario where a Short Circuit (Zzzt) happens during a Solar Flare, everything on that grid will lose power (as normal) since the batteries empty out.
 
-## Vanilla Races Expanded - Android
-- Changes the research requirement of Android Tech to Advanced Fabrication instead of High Mechtech
-  - This was done to remove the need for having a mechanitor and fighting boss mechs to access the research.
-
+## Vanilla Factions Expanded - Ancients
+- Compatibility to not affect how ancient technology works during solar flares, including ancient batteries (they will not drain like normal batteries).
 
 # ChangeLog
+## 0.3.2 [08/17/24]
+- Changed scope of mod to focus on Solar Flare behavior exclusively. This was done so development can focus on ensuring maximum compabibility with other mods around Solar Flare behavior.
+- Updated names in XML files and the assembly as well as the GitHub to reflect the change in focus.
+
 ## 0.3.1 [08/15/24]
 - Updated battery drain behavior to account for batteries with 0 store energy.
 
@@ -42,17 +45,10 @@ For Science! This mod is for those colonists who value science and industry over
 - Initial functionality of changing Vanilla Races Expanded - Android: Android Tech to require Advanced Fabrication research INSTEAD of High Mechtech.
 
 ## Bugs
-- None ATM but need to check how zzzt interacts with with new solar flare battery behavior
+- None ATM
 
-## Short Term Goals
-- Add support for EMI field to behave similarly with batteries supporting colony
-- Mod settings?
-
-## Long Term Ideas
-- Maybe some BioSculptor behavior like regenerating all parts at once at the tradeoff of dynamically changing the amount of time you spend in the pod.
-  - There is other BioSculptor stuff I'd like to change but there are currently other mods that do it well and where do I draw the line on making this a mod that just combines a bunch of functionality of other mods vs my own ideas?
-- Short Circuit (Zzzt) less awful.
-  - When looking into this I found an older mod not updated to 1.5 with posted source code that I thought about incorporating, but it had notes about incompatibilies with "fuse box" mods which took me down a rabbit hole of power management and short circuit mods that I feel like I should probably not do anything around this behavior then and leave it up to those mods, but we'll see - on the backburner for now.
-- Make craftable things in Vanilla that are not currently craftable that are science-y related? (eg arcotech bionics?)
+## ToDo
+- Verify/build compatibility with "Solar Flares affect mechanoids" mod
+- Verify/build compatibility with "RT Solar Flare Shield" mod
 
 
