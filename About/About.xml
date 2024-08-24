@@ -9,13 +9,6 @@
 		<li>1.5</li>
 	</supportedVersions>
 	
-	<loadAfter>
-		<li>Ludeon.RimWorld</li>
-		<li>Ludeon.RimWorld.Royalty</li>
-		<li>Ludeon.RimWorld.Ideology</li>
-		<li>Ludeon.RimWorld.Biotech</li>
-	</loadAfter>
-	
 	<description>
 Solar Flare Revamp aims to make Solar Flares behave a little differently. This will generally make them more forgiving but also, hopefully, more interesting. A full list of what is changed can be found on the project's Steam or GitHub pages.
 	</description>
