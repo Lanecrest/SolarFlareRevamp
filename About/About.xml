@@ -3,7 +3,7 @@
 	<packageId>DoctorWorm.SolarFlareRevamp</packageId>
 	<name>Solar Flare Revamp</name>
 	<author>Doctor Worm</author>
-	<modVersion>0.3.2</modVersion>
+	<modVersion>0.3.3</modVersion>
 	
 	<supportedVersions>
 		<li>1.5</li>
