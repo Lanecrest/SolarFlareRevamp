@@ -18,8 +18,8 @@ Solar Flare Revamps aims to make Solar Flares behave a little differently. This 
 
 # ChangeLog
 ## 0.3.3 [08/25/24]
-- Identified a bug that prevents the custom Solar Flare from triggering during normal gameplay (currently will only trigger via dev mode). Updated patching to see if this fixes.
-- Updated some unrelated typos and references.
+- Identified a bug that prevents the custom Solar Flare from triggering during normal gameplay (currently will only trigger via dev mode).
+- After many trials and tribulations, this will need to be converted to a Harmony patch or require some more extensive coding. As it stands this demonstrates the behavior if executed via Dev Mode but otherwise does not trigger during normal gameplay.
 
 ## 0.3.2 [08/17/24]
 - Changed scope of mod to focus on Solar Flare behavior exclusively. This was done so development can focus on ensuring maximum compabibility with other mods around Solar Flare behavior.
