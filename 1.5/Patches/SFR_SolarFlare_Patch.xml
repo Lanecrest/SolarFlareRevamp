@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- This causes a custom game condition to trigger instead of normal Solar Flare behavior. Note that with this active, a "vanilla" Solar lare can never trigger even via Dev Mode. -->
+<!-- This causes a custom game condition to trigger instead of normal Solar Flare behavior. Note that with this active, a "vanilla" Solar lare can only trigger via Dev Mode. -->
 <Patch>
     <Operation Class="PatchOperationReplace">
-        <xpath>Defs/GameConditionDef[defName="SolarFlare"]/conditionClass</xpath>
-            <value>
-		        <conditionClass>SolarFlareRevamp.GameCondition_SFR_SolarFlare</conditionClass>
-            </value>
+        <xpath>Defs/IncidentDef[defName="SolarFlare"]/gameCondition</xpath>
+		<value>
+			<gameCondition>SFR_SolarFlare</gameCondition>
+		</value>
     </Operation>
 </Patch>
