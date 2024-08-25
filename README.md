@@ -19,6 +19,10 @@ Solar Flare Revamps aims to make Solar Flares behave a little differently. This 
   - Yes and no. You can review the source to see exactly how it works and what it does, but plainly speaking, all this mod does is create a new Solar Flare game condition that triggers anytime a regular Solar Flare _would_ trigger, and the event still disables electronics as normal. What it adds, is a check to see if any of your buildings are connected to batteries and if so, they remain powered as long as the batteries have stored energy. It also causes batteries to drain at a quicker rate during Solar Flares. This behavior only occurs while the new Solar Flare game condition is active.
 
 # ChangeLog
+## 0.3.3 [08/24/24]
+- Updated some typos and references.
+- Identified a bug that prevents the custom Solar Flare from triggering during normal gameplay (currently will only trigger via dev mode). This is a serious bug that needs to be fixed before widespread release.
+
 ## 0.3.2 [08/17/24]
 - Changed scope of mod to focus on Solar Flare behavior exclusively. This was done so development can focus on ensuring maximum compabibility with other mods around Solar Flare behavior.
 - Updated names in XML files and the assembly as well as the GitHub to reflect the change in focus.
