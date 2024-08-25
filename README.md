@@ -9,7 +9,14 @@ Solar Flare Revamps aims to make Solar Flares behave a little differently. This 
 - In the unfortunate scenario where a Short Circuit (Zzzt) happens during a Solar Flare, everything on that grid will lose power (as normal) since the batteries empty out.
 
 ## Vanilla Factions Expanded - Ancients
-- Compatibility to not affect how ancient technology works during solar flares, including ancient batteries (they will not drain like normal batteries).
+- Compatibility to not affect how ancient technology works during Solar Flares, including ancient batteries (they will not drain like normal batteries).
+
+# FAQ
+- Is this compatible with [mod name]?
+  - This should be compatible with any mod as long as it does not change Solar Flare behavior, and even then, it would still be technically compatible (in that it shouldn't cause any errors) as this doesn't modify the existing Solar Flare game event. Instead, it adds a newly defined event and makes it so this new event triggers _in place of_ of regular Solar Flares (and the implementation was done this way exactly so it would not break any mods that add numerous features and just so happen to do something to Solar Flares as well).
+  - For any mods where specific compatibility was accounted for, refer to the "features" section above.
+- Does this do anything other than change how Solar Flares work?
+  - Yes and no. You can review the source to see exactly how it works and what it does, but plainly speaking, all this mod does is create a new Solar Flare game condition that triggers anytime a regular Solar Flare _would_ trigger, and the event still disables electronics as normal. What it adds, is a check to see if any of your buildings are connected to batteries and if so, they remain powered as long as the batteries have stored energy. It also causes batteries to drain at a quicker rate during Solar Flares. This behavior only occurs while the new Solar Flare game condition is active.
 
 # ChangeLog
 ## 0.3.2 [08/17/24]
@@ -17,7 +24,7 @@ Solar Flare Revamps aims to make Solar Flares behave a little differently. This 
 - Updated names in XML files and the assembly as well as the GitHub to reflect the change in focus.
 
 ## 0.3.1 [08/15/24]
-- Updated battery drain behavior to account for batteries with 0 store energy.
+- Updated battery drain behavior to account for batteries with 0 stored energy.
 
 ## 0.3.0 [08/15/24]
 - Overhauled the battery draining system which also allowed me to implement having things connected to batteries stay powered during solar flare. If all batteries are drained, the power goes out.
@@ -50,5 +57,6 @@ Solar Flare Revamps aims to make Solar Flares behave a little differently. This 
 ## ToDo
 - Verify/build compatibility with "Solar Flares affect mechanoids" mod
 - Verify/build compatibility with "RT Solar Flare Shield" mod
+- Upload to Steam Workshop
 
 
