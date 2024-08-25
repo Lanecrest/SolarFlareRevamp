@@ -41,7 +41,7 @@ namespace SolarFlareRevamp
             base.Init();
             if (Prefs.DevMode)
             {
-                Log.Message("For Science! Solar Flare initialized.");
+                Log.Message("Custom Solar Flare initialized.");
             }
             if (ModsConfig.IsActive("VanillaExpanded.VFEA"))
             {
@@ -121,7 +121,7 @@ namespace SolarFlareRevamp
             {
                 if (Prefs.DevMode)
                 {
-                    Log.Message($"For Science! Solar Flare battery drain values:");
+                    Log.Message($"Custom Solar Flare battery drain values:");
                     Log.Message($"Battery Count: {batteryCount}");
                     Log.Message($"Total Power Draw: {totalPowerDraw}");
                     Log.Message($"Drain Multiplier: {drainMultiplier}");
@@ -136,7 +136,7 @@ namespace SolarFlareRevamp
             base.End();
             if (Prefs.DevMode)
             {
-                Log.Message("For Science! Solar Flare ended.");
+                Log.Message("Custom Solar Flare ended.");
             }
         }
     }
