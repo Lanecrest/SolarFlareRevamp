@@ -52,7 +52,7 @@ Solar Flare Revamps aims to make Solar Flares behave a little differently. This 
 - Initial functionality of changing Vanilla Races Expanded - Android: Android Tech to require Advanced Fabrication research INSTEAD of High Mechtech.
 
 ## Bugs
-- None ATM
+- Triggers if Solar Flare is invoked via dev mode but not when Solar Flare triggers naturally
 
 ## ToDo
 - Verify/build compatibility with "Solar Flares affect mechanoids" mod
