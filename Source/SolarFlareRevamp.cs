@@ -23,8 +23,8 @@ namespace SolarFlareRevamp
         }
     }
 
-    // Class for new solar flare game condition. Even though with the XML patching a normal SolarFlare will never trigger, I am choosing not to overwrite the vanilla SolarFlare behavior itself.
-    // Doing it this way to avoid potential hard conflicts with other mods that may apply changes to solarflares as a part of broader changes they do, but I may change this later.
+    // Class for new solar flare game condition. Even though with the XML patching a normal Solar Flare won't trigger, I am choosing not to overwrite the vanilla Solar Flare behavior itself.
+    // Doing it this way to avoid potential hard conflicts with other mods that may apply changes to Solar Flares as a part of broader changes they do, but I may change this later.
     // Just note that whatever possible changes those modes provide would not take effect while this mod is active.
     // I am also choosing to do this instead of a Harmony patch to avoid needing the dependancy as there is nothing else this mod would need Harmony for.
     public class GameCondition_SFR_SolarFlare : GameCondition_DisableElectricity
