@@ -59,6 +59,6 @@ Solar Flare Revamps aims to make Solar Flares behave a little differently. This 
 ## ToDo
 - Verify/build compatibility with "Solar Flares affect mechanoids" mod
 - Verify/build compatibility with "RT Solar Flare Shield" mod
-- Upload to Steam Workshop
+- Update about package name to reference Lanecrest
 
 
