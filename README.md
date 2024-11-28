@@ -1,5 +1,6 @@
 # Solar Flare Revamp
-Solar Flare Revamps aims to make Solar Flares behave a little differently. This will generally make them more forgiving but also, hopefully, more interesting. A full list of what is changed can be found on the project's Steam or GitHub pages.
+Solar Flare Revamps aims to make Solar Flares behave a little differently. This will generally make them more forgiving but also, hopefully, more interesting. This project has been archived due to a bug that is preventing the current code from working outside of dev mode. It may be unarchvied in the future when there is time to return to the project and convert it to a Harmony patch.
+
 
 ## Features
 
